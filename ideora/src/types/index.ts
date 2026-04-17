@@ -50,6 +50,19 @@ export interface Opportunity {
   trend: Trend;
   title: string;
   summary: string;
+
+  // === ACTION FIELDS — the decision engine core ===
+  hook: string;                   // The actual opening line / video title to post
+  whyThisWorks: string;           // One-sentence strategic insight explaining the signal
+  bestFormat: ContentFormat;      // The single highest-leverage format right now
+  bestPlatform: Platform;         // The single highest-leverage platform right now
+  timing: {
+    postWithin: string;           // "Next 48 hours", "Today", "This week"
+    peakIn: string;               // "3 days", "6 days" — when this trend peaks
+    urgencyLabel: string;         // "Post today", "Act in 2 days", "This week"
+  };
+  urgencyLevel: 'critical' | 'high' | 'medium' | 'low';
+
   score: number;          // 0-100 overall opportunity score
   window: WindowStatus;
   saturation: number;     // 0-100
